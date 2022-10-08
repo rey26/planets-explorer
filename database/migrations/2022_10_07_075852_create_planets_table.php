@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('planets', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->index();
             $table->float('diameter')->index();
             $table->float('rotation_period')->index();
             $table->foreignIdFor(GravityStandard::class);
