@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\GravityStandard;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('planets', function (Blueprint $table) {
+        Schema::create('resident_species', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->float('diameter')->index();
-            $table->float('rotation_period')->index();
-            $table->foreignIdFor(GravityStandard::class);
+            $table->bigInteger('resident_id');
+            $table->bigInteger('species_id');
             $table->timestamps();
+            $table->unique(['resident_id', 'species_id']);
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planets');
+        Schema::dropIfExists('resident_species');
     }
 };

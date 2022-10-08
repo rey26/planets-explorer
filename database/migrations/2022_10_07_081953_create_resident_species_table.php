@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('resident_species', function (Blueprint $table) {
+        Schema::create('species', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('external_id')->index();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resident_species');
+        Schema::dropIfExists('species');
     }
 };

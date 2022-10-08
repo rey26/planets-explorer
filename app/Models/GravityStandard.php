@@ -10,6 +10,8 @@ class GravityStandard extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function planets(): HasMany
     {
         return $this->hasMany(Planet::class);

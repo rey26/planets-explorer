@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\ResidentSpecies;
+use App\Models\Planet;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +18,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignIdFor(Planet::class);
-            $table->foreignIdFor(ResidentSpecies::class);
             $table->timestamps();
         });
     }
