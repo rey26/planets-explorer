@@ -10,6 +10,8 @@ class Terrain extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function planets(): BelongsToMany
     {
         return $this->belongsToMany(Planet::class);
