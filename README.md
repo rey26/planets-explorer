@@ -14,3 +14,4 @@ INSTALLATION
 TODO
 
 - delete unused data after sync
+- optimize retrieving of data by loading list of all species and all residents instead of frequent calls for each entity
