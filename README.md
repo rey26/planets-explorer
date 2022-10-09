@@ -6,10 +6,11 @@ ABOUT
 
 INSTALLATION
 
-1, to run containers use `./vendor/bin/sail up -d` (you should create an alias in .bashrc for further use)
-2, run all table migrations using: `sail artisan migrate`
-3, sync data with: `sail artisan swapi:sync`
-2, running site will appear on http://localhost
+1. to run containers use `./vendor/bin/sail up -d` (you should create an alias in .bashrc for further use)
+2. run all table migrations using: `sail artisan migrate`
+3. sync data with: `sail artisan swapi:sync`
+4. to list and filter planets visit http://localhost in web browser
+5. to access aggregated planet data via API, call https://localhost/api/planets
 
 TODO
 
