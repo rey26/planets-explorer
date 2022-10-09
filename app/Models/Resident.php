@@ -15,7 +15,7 @@ class Resident extends Model
 
     public function species(): BelongsToMany
     {
-        return $this->belongsToMany(ResidentSpecies::class, 'resident_species', 'species_id');
+        return $this->belongsToMany(Species::class, 'resident_species', 'species_id', 'resident_id');
     }
 
     public function planet(): BelongsTo
