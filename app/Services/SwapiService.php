@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Http;
 
 class SwapiService
 {
-    protected string $baseUri = 'https://swapi.py4e.com/api/';
+    private const BASE_URL = 'https://swapi.py4e.com/api/';
 
     public function syncPlanets(): void
     {
-        foreach (Arr::get(Http::get($this->baseUri . 'planets')->json(), 'results') as $planet) {
+        foreach (Arr::get(Http::get(self::BASE_URL . 'planets')->json(), 'results') as $planet) {
             /** @var Planet $localPlanet */
             $localPlanet = Planet::updateOrCreate(
                 [
