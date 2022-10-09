@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\PlanetController;
+use App\Http\Controllers\Web\PlanetController;
 use Illuminate\Support\Facades\Route;
 
 /*
