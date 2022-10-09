@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Resident;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -49,5 +50,44 @@ class Planet extends Model
             ->when(Arr::get($data, 'gravity'), function (Builder $query) use ($data) {
                 return $query->where('gravity_standard_id', Arr::get($data, 'gravity'));
             });
+    }
+
+    public static function getTerrainDistribution(): array
+    {
+        $terrains = [];
+        $usedTerrainsCount = 0;
+
+        foreach (Planet::all() as $planet) {
+            $usedTerrainsCount += $planet->terrains->count();
+        }
+
+        foreach (Terrain::all() as $terrain) {
+            $terrains[$terrain->name] = round(($terrain->planets->count() / $usedTerrainsCount) * 100, 2);
+        }
+
+        return $terrains;
+    }
+
+    public static function getAllLivingSpecies(): array
+    {
+        $livingSpecies = [];
+
+        foreach (Planet::all() as $planet) {
+            /** @var Resident $resident */
+            foreach ($planet->residents as $resident) {
+                foreach ($resident->species as $species) {
+                    if (
+                        Arr::has($livingSpecies, $planet->name) &&
+                        Arr::has($livingSpecies[$planet->name], $species->name)
+                    ) {
+                        $livingSpecies[$planet->name][$species->name] += 1;
+                    } else {
+                        $livingSpecies[$planet->name][$species->name] = 1;
+                    }
+                }
+            }
+        }
+
+        return $livingSpecies;
     }
 }
