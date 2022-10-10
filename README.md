@@ -7,10 +7,24 @@ ABOUT
 INSTALLATION
 
 1. to run containers use `./vendor/bin/sail up -d` (you should create an alias in .bashrc for further use)
-2. run all table migrations using: `sail artisan migrate`
-3. sync data with: `sail artisan swapi:sync`
-4. to list and filter planets visit http://localhost in web browser
-5. to access aggregated planet data via API, call https://localhost/api/planets
+1. run all table migrations using: `sail artisan migrate`
+1. generate encryption key `sail artisan key:generate`
+1. sync data with: `sail artisan swapi:sync`
+
+USAGE
+
+1. to list and filter planets visit http://localhost in web browser
+1. to access aggregated planet data via API, call https://localhost/api/planets
+1. to create journal log, call https://localhost/api/journal-logs using POST method with following JSON body
+```json
+    {
+        "mood": [null|string],
+        "weather": [null|string],
+        "lat": [numeric],
+        "lon": [numeric],
+        "note": [null|string]
+    }
+```
 
 TODO
 
