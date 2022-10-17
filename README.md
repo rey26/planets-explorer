@@ -1,8 +1,7 @@
 ABOUT
 
-- this is an interview assignment for Brackets company
 - the aim is to create a Laravel app that connects to external API and syncs the data in the DB
-- Topic of the assignment is Star wars data about planets and its residents
+- Topic is Star wars data about planets and its residents
 
 INSTALLATION
 
